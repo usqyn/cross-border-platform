@@ -1,0 +1,110 @@
+.container {
+  padding: 20rpx;
+}
+
+.tabs {
+  display: flex;
+  background: white;
+  border-radius: 16rpx;
+  padding: 8rpx;
+  margin-bottom: 20rpx;
+  overflow-x: auto;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 26rpx;
+  color: #6b7280;
+  border-radius: 12rpx;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+}
+
+.order-card {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.order-title {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+.order-type {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.order-status {
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.order-status.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.order-status.paid {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.order-status.settled {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.order-time {
+  font-size: 24rpx;
+  color: #9ca3af;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #374151;
+  margin-bottom: 20rpx;
+}
+
+.order-footer {
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f3f4f6;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 16rpx 32rpx;
+  font-size: 26rpx;
+}
+
+.uploaded-text {
+  color: #059669;
+  font-size: 26rpx;
+}

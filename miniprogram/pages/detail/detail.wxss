@@ -1,0 +1,286 @@
+.header-card {
+  padding: 30rpx;
+}
+
+.header-top {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  background: #f3f4f6;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16rpx;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 24rpx;
+}
+
+.certified-tag {
+  background: #10b981;
+  color: white;
+  padding: 6rpx 14rpx;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+}
+
+.rating {
+  color: #f59e0b;
+  font-size: 28rpx;
+}
+
+.reviews {
+  color: #6b7280;
+}
+
+.description {
+  font-size: 28rpx;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 24rpx;
+}
+
+.action-buttons {
+  margin-top: 24rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.ai-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.section {
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 24rpx;
+}
+
+.image-list {
+  display: flex;
+  gap: 20rpx;
+  flex-wrap: wrap;
+}
+
+.cred-image, .case-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 12rpx;
+  background: #f3f4f6;
+}
+
+.review-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f3f4f6;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-header {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+  align-items: center;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 8rpx;
+}
+
+.verified-tag {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+  font-size: 20rpx;
+  margin-left: 12rpx;
+}
+
+.review-rating {
+  color: #f59e0b;
+  font-size: 24rpx;
+}
+
+.review-content {
+  font-size: 26rpx;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 12rpx;
+}
+
+.review-date {
+  font-size: 22rpx;
+  color: #9ca3af;
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  border-radius: 32rpx 32rpx 0 0;
+  padding-bottom: 40rpx;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f3f4f6;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111827;
+}
+
+.modal-close {
+  font-size: 48rpx;
+  color: #9ca3af;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #374151;
+  margin-bottom: 16rpx;
+}
+
+.picker, .input {
+  width: 100%;
+  padding: 24rpx;
+  background: #f9fafb;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  padding: 24rpx;
+  background: #f9fafb;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 20rpx;
+  padding: 0 30rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+}
+
+.cancel-btn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.confirm-btn {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+}
+
+.timezone-alert {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2rpx solid #f59e0b;
+  margin-bottom: 24rpx;
+}
+
+.timezone-icon {
+  font-size: 48rpx;
+}
+
+.timezone-content {
+  flex: 1;
+}
+
+.timezone-message {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #92400e;
+  margin-bottom: 8rpx;
+}
+
+.timezone-time {
+  font-size: 24rpx;
+  color: #b45309;
+}

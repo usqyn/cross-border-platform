@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab {{active}}" bindtap="switchTab" data-status="pending_unlock">待解锁</view>
+    <view class="tab {{activeTab === 'unlocked' ? 'active' : ''}}" bindtap="switchTab" data-status="unlocked">已对接</view>
+    <view class="tab {{activeTab === 'completed' ? 'active' : ''}}" bindtap="switchTab" data-status="completed">已完成</view>
+  </view>
+
+  <view class="leads-list">
+    <view wx:if="{{leads.length === 0}}" class="empty-state">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无线索</text>
+    </view>
+
+    <view wx:for="{{leads}}" wx:key="_id" class="lead-card card" bindtap="goToDetail" data-id="{{item._id}}">
+      <view class="lead-header">
+        <view class="lead-title">
+        <text class="lead-type">{{getServiceTypeName(item.service_type)}}</text>
+        <text class="lead-status {{item.status}}">{{getStatusText(item.status)}}</text>
+      </view>
+      <view class="lead-time">{{formatTime(item.created_at)}}</view>
+    </view>
+    <view class="lead-content">{{item.requirements}}</view>
+    <view class="lead-meta">
+      <text class="lead-user">客户：{{item.user_id?.nickname || '匿名用户'}}</text>
+      <text class="lead-date">办理时间：{{item.departure_time}}</text>
+    </view>
+    <view class="lead-footer" wx:if="{{item.status === 'pending_unlock'">
+      <button class="unlock-btn" bindtap="unlockLead" data-id="{{item._id}}" catchtap="true">
+        消耗1积分解锁联系方式
+      </button>
+    </view>
+    <view class="lead-footer" wx:if="{{item.status === 'unlocked' && item.escrow_amount === 0}}">
+      <view class="contact-info">
+        <text>电话：{{item.contact_phone}}</text>
+        <text wx:if="{{item.contact_wechat}}">微信：{{item.contact_wechat}}</text>
+      </view>
+      <button class="escrow-btn" bindtap="createEscrow" data-id="{{item._id}}">
+        发起担保交易
+      </button>
+    </view>
+  </view>
+</view>
+
+<view class="modal-mask" wx:if="{{showEscrowModal}}" bindtap="hideEscrowModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">发起担保交易</text>
+      <text class="modal-close" bindtap="hideEscrowModal">×</text>
+    </view>
+    <view class="modal-body">
+      <view class="form-item">
+        <text class="form-label">服务金额 (元)</text>
+        <input class="input" type="digit" placeholder="请输入服务金额" value="{{escrowAmount}}" bindinput="onAmountInput"></input>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn cancel-btn" bindtap="hideEscrowModal">取消</button>
+      <button class="modal-btn confirm-btn" bindtap="submitEscrow" loading="{{submittingEscrow}}">发起</button>
+    </view>
+  </view>
+</view>

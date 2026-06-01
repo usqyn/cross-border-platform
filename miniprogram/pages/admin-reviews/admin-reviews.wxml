@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="stats-card card">
+    <view class="stat-item">
+      <text class="stat-value">4.8</text>
+      <text class="stat-label">综合评分</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-value">128</text>
+      <text class="stat-label">总评价数</text>
+    </view>
+  </view>
+
+  <view class="reviews-list">
+    <view wx:if="{{reviews.length === 0}}" class="empty-state">
+      <text class="empty-icon">⭐</text>
+      <text class="empty-text">暂无评价</text>
+    </view>
+
+    <view wx:for="{{reviews}}" wx:key="_id" class="review-card card">
+      <view class="review-header">
+        <image class="review-avatar" src="{{item.user_id?.avatar || '/assets/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="review-info">
+          <view class="review-user">
+            {{item.user_id?.nickname || '匿名用户'}
+            <text wx:if="{{item.is_verified}}" class="verified-tag">平台验证客户</text>
+          </view>
+          <view class="review-rating">
+            <text wx:for="{{5}}" wx:for-item="star" wx:key="*this">
+              {{star <= item.rating ? '★' : '☆'}}
+            </text>
+          </view>
+        </view>
+        <view class="review-time">{{formatTime(item.created_at)}}</view>
+      </view>
+      <view class="review-content">{{item.content.zh || '评价内容'}}</view>
+    </view>
+  </view>
+</view>

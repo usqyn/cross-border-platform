@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="category-tabs">
+    <view 
+      wx:for="{{categories}}" wx:key="key" 
+      class="tab {{currentCategory === item.key ? 'active' : ''}}"
+      bindtap="switchCategory"
+      data-key="{{item.key}}"
+    >
+      {{item.name}}
+    </view>
+  </view>
+
+  <view class="intermediary-list">
+    <view 
+      wx:for="{{intermediaries}}" wx:key="id" 
+      class="intermediary-card card"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="intermediary-header">
+        <image class="logo" src="{{item.logo}}" mode="aspectFill" />
+        <view class="info">
+          <view class="name">
+            {{item.name}}
+            <text wx:if="{{item.membershipLevel === 'vip'}}" class="vip-tag">VIP</text>
+            <text wx:if="{{item.membershipLevel === 'premium'}}" class="premium-tag">Premium</text>
+          </view>
+          <view class="meta">
+            <text wx:if="{{item.isCertified}}" class="certified-tag">{{t('intermediary.certified')}}</text>
+            <text class="rating">★ {{item.rating}}</text>
+            <text class="reviews">{{item.reviewCount}} {{t('intermediary.reviews')}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="tags">
+        <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</text>
+      </view>
+      <view class="description">{{item.description}}</view>
+      <view class="contact-section">
+        <view class="contact-item" wx:if="{{item.contact.phone}}">
+          <text class="contact-icon">📞</text>
+          <text class="contact-value">{{item.contact.phone}}</text>
+        </view>
+        <view class="contact-item" wx:if="{{item.contact.wechat}}">
+          <text class="contact-icon">💬</text>
+          <text class="contact-value">{{item.contact.wechat}}</text>
+        </view>
+      </view>
+      <view class="credit-score" wx:if="{{item.credit_score}}">
+        <text class="credit-label">信用分:</text>
+        <text class="credit-value {{item.credit_score >= 80 ? 'good' : item.credit_score >= 60 ? 'medium' : 'low'}}">{{item.credit_score}}</text>
+      </view>
+    </view>
+  </view>
+</view>

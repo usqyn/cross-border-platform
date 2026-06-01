@@ -1,0 +1,81 @@
+.container {
+  padding: 20rpx;
+}
+
+.stats-card {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30rpx;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 12rpx;
+}
+
+.stat-label {
+  font-size: 26rpx;
+  color: #6b7280;
+}
+
+.review-card {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.review-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.review-info {
+  flex: 1;
+}
+
+.review-user {
+  font-size: 28rpx;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.verified-tag {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 20rpx;
+  margin-left: 12rpx;
+}
+
+.review-rating {
+  color: #f59e0b;
+  font-size: 24rpx;
+}
+
+.review-time {
+  font-size: 24rpx;
+  color: #9ca3af;
+}
+
+.review-content {
+  font-size: 26rpx;
+  color: #374151;
+  line-height: 1.6;
+}

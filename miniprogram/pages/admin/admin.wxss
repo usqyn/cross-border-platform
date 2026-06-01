@@ -1,0 +1,66 @@
+.container {
+  padding: 20rpx;
+}
+
+.header-card {
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.wallet-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.wallet-item {
+  text-align: center;
+}
+
+.wallet-label {
+  display: block;
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-bottom: 8rpx;
+}
+
+.wallet-value {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.nav-item {
+  padding: 40rpx 20rpx;
+  text-align: center;
+  position: relative;
+}
+
+.nav-icon {
+  font-size: 60rpx;
+  margin-bottom: 16rpx;
+}
+
+.nav-title {
+  font-size: 30rpx;
+  color: #374151;
+  font-weight: 500;
+}
+
+.nav-badge {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  background: #ef4444;
+  color: white;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  min-width: 36rpx;
+}

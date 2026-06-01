@@ -1,0 +1,108 @@
+<view class="container" wx:if="{{detail}}">
+  <view wx:if="{{timezoneMessage}}" class="timezone-alert card">
+    <view class="timezone-icon">🕐</view>
+    <view class="timezone-content">
+      <view class="timezone-message">{{timezoneMessage}}</view>
+      <view class="timezone-time">哈萨克斯坦当地时间: {{kazakhstanTime}}</view>
+    </view>
+  </view>
+
+  <view class="header-card card">
+    <view class="header-top">
+      <image class="logo" src="{{detail.logo}}" mode="aspectFill" />
+      <view class="info">
+        <view class="name">{{detail.name}}</view>
+        <view class="meta">
+          <text wx:if="{{detail.isCertified}}" class="certified-tag">{{t('intermediary.certified')}}</text>
+          <text class="rating">★ {{detail.rating}}</text>
+          <text class="reviews">{{detail.reviewCount}} {{t('intermediary.reviews')}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="tags">
+      <text wx:for="{{detail.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</text>
+    </view>
+    <view class="description">{{detail.description}}</view>
+    <view class="action-buttons">
+      <button class="action-btn ai-btn" bindtap="openAIConsult">
+        在线咨询 (AI转人工)
+      </button>
+      <button class="action-btn primary-btn" bindtap="showLeadModal">
+        提交需求申请
+      </button>
+    </view>
+  </view>
+
+  <view wx:if="{{detail.credentials.length > 0}}" class="section card">
+    <view class="section-title">{{t('detail.credentials')}}</view>
+    <view class="image-list">
+      <image wx:for="{{detail.credentials}}" wx:key="*this" class="cred-image" src="{{item}}" mode="aspectFill" />
+    </view>
+  </view>
+
+  <view wx:if="{{detail.cases.length > 0}}" class="section card">
+    <view class="section-title">{{t('detail.cases')}}</view>
+    <view class="image-list">
+      <image wx:for="{{detail.cases}}" wx:key="*this" class="case-image" src="{{item}}" mode="aspectFill" />
+    </view>
+  </view>
+
+  <view wx:if="{{detail.reviews.length > 0}}" class="section card">
+    <view class="section-title">{{t('detail.reviews')}}</view>
+    <view class="review-list">
+      <view wx:for="{{detail.reviews}}" wx:key="id" class="review-item">
+        <view class="review-header">
+          <image class="avatar" src="{{item.user.avatar}}" mode="aspectFill" />
+          <view class="user-info">
+            <view class="user-name">
+              {{item.user.nickname}}
+              <text wx:if="{{item.isVerified}}" class="verified-tag">{{t('detail.verified')}}</text>
+            </view>
+            <view class="review-rating">★ {{item.rating}}</view>
+          </view>
+        </view>
+        <view class="review-content">{{item.content}}</view>
+        <view class="review-date">{{item.createdAt}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="modal-mask" wx:if="{{showLeadModal}}" bindtap="hideLeadModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">提交需求申请</text>
+      <text class="modal-close" bindtap="hideLeadModal">×</text>
+    </view>
+    <view class="modal-body">
+      <view class="form-item">
+        <text class="form-label">服务类型</text>
+        <picker bindchange="onServiceTypeChange" value="{{serviceTypeIndex}}" range="{{serviceTypes}}">
+          <view class="picker">{{serviceTypes[serviceTypeIndex]}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="form-label">出发/办理时间</text>
+        <picker mode="date" bindchange="onDateChange" value="{{departureDate}}">
+          <view class="picker">{{departureDate || '请选择时间'}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="form-label">具体需求</text>
+        <textarea class="textarea" placeholder="请详细描述您的需求..." value="{{requirements}}" bindinput="onRequirementsInput"></textarea>
+      </view>
+      <view class="form-item">
+        <text class="form-label">联系电话</text>
+        <input class="input" type="number" placeholder="请输入您的手机号" value="{{contactPhone}}" bindinput="onPhoneInput"></input>
+      </view>
+      <view class="form-item">
+        <text class="form-label">微信号 (选填)</text>
+        <input class="input" placeholder="请输入您的微信号" value="{{contactWechat}}" bindinput="onWechatInput"></input>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn cancel-btn" bindtap="hideLeadModal">取消</button>
+      <button class="modal-btn confirm-btn" bindtap="submitLead" loading="{{submitting}}">提交申请</button>
+    </view>
+  </view>
+</view>

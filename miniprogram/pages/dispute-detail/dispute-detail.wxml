@@ -1,0 +1,137 @@
+<view class="container" wx:if="{{dispute}}">
+  <view class="header card">
+    <view class="title">纠纷详情</view>
+    <view class="status {{dispute.status}}">{{getStatusText(dispute.status)}}</view>
+  </view>
+
+  <view class="info card">
+    <view class="info-item">
+      <text class="label">订单金额</text>
+      <text class="value">¥{{dispute.escrow_amount}}</text>
+    </view>
+    <view class="info-item" wx:if="{{dispute.status === 'dispute_reviewing'}}">
+      <text class="label">举证截止</text>
+      <text class="value">{{formatDeadline(dispute.dispute_deadline)}}</text>
+    </view>
+  </view>
+
+  <view class="refund-info card" wx:if="{{dispute.status === 'refund_requested' || dispute.status === 'partial_refund_proposed'}}">
+    <view class="refund-title">退款申请</view>
+    <view class="refund-row">
+      <text class="label">申请金额</text>
+      <text class="amount">¥{{dispute.refund_request?.requested_amount}}</text>
+    </view>
+    <view class="refund-row">
+      <text class="label">退款原因</text>
+      <text class="reason">{{dispute.refund_request?.reason}}</text>
+    </view>
+    <view class="evidences" wx:if="{{dispute.refund_request?.evidences?.length > 0}}">
+      <view class="evidence-image" wx:for="{{dispute.refund_request.evidences}}" wx:key="*this">
+        <image class="image" src="{{item}}" mode="aspectFill" />
+      </view>
+    </view>
+  </view>
+
+  <view class="partial-proposal card" wx:if="{{dispute.status === 'partial_refund_proposed'}}">
+    <view class="proposal-title">中介提出部分退款方案</view>
+    <view class="proposal-row">
+      <text class="label">退款金额</text>
+      <text class="amount">¥{{dispute.partial_refund_proposal?.proposed_amount}}</text>
+    </view>
+    <view class="proposal-row">
+      <text class="label">扣款原因</text>
+      <text class="reason">{{dispute.partial_refund_proposal?.deduction_reason}}</text>
+    </view>
+  </view>
+
+  <view class="arbitration card" wx:if="{{dispute.status === 'arbitrated_completed'}}">
+    <view class="arbitration-title">仲裁结果</view>
+    <view class="arbitration-row">
+      <text class="label">退还给买家</text>
+      <text class="amount">¥{{dispute.arbitration?.refund_to_buyer}}</text>
+    </view>
+    <view class="arbitration-row">
+      <text class="label">支付给中介</text>
+      <text class="amount">¥{{dispute.arbitration?.pay_to_seller}}</text>
+    </view>
+    <view class="arbitration-row">
+      <text class="label">裁决理由</text>
+      <text class="reason">{{dispute.arbitration?.judgment_reason}}</text>
+    </view>
+  </view>
+
+  <view class="logs card">
+    <view class="logs-title">举证记录</view>
+    <view class="logs-list">
+      <view class="log-item" wx:for="{{dispute.dispute_logs}}" wx:key="index">
+        <view class="log-header">
+          <image class="avatar" src="{{item.user?.avatar}}" mode="aspectFill" />
+          <view class="log-user">
+            <text class="name">{{item.user?.nickname}}</text>
+            <text class="type">{{item.user_type === 'buyer' ? '买家' : '卖家'}}</text>
+          </view>
+          <text class="time">{{formatTime(item.submitted_at)}}</text>
+        </view>
+        <view class="log-message" wx:if="{{item.message}}">{{item.message}}</view>
+        <view class="log-images" wx:if="{{item.images?.length > 0}}">
+          <image class="log-image" wx:for="{{item.images}}" wx:for-item="img" wx:key="*this" src="{{img}}" mode="aspectFill" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions card" wx:if="{{canSubmitEvidence}}">
+    <view class="form-item">
+      <text class="label">补充说明</text>
+      <textarea class="textarea" placeholder="请输入说明内容" value="{{message}}" bindinput="onMessageInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">上传图片</text>
+      <view class="upload-area">
+        <view class="image-list">
+          <view class="image-item" wx:for="{{images}}" wx:key="*this">
+            <image class="image" src="{{item}}" mode="aspectFill" />
+            <text class="delete" bindtap="deleteImage" data-index="{{index}}">×</text>
+          </view>
+          <view class="upload-btn" wx:if="{{images.length < 5}}" bindtap="chooseImages">
+            <text class="icon">+</text>
+            <text class="text">添加</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="submit-btn primary-btn" bindtap="submitEvidence" loading="{{submitting}}">
+      提交证据
+    </button>
+  </view>
+
+  <view class="action-buttons card" wx:if="{{showActionButtons}}">
+    <button wx:if="{{isRefundRequested && isSeller}}" class="action-btn" bindtap="approveRefund">
+      同意退款
+    </button>
+    <button wx:if="{{isRefundRequested && isSeller}}" class="action-btn reject" bindtap="rejectRefund">
+      拒绝退款
+    </button>
+    <button wx:if="{{isPartialProposed && isBuyer}}" class="action-btn" bindtap="acceptPartialRefund">
+      接受方案
+    </button>
+    <button wx:if="{{isPartialProposed && isBuyer}}" class="action-btn reject" bindtap="rejectPartialRefund">
+      拒绝方案
+    </button>
+  </view>
+
+  <view class="propose-card card" wx:if="{{canProposePartial}}">
+    <view class="propose-title">提出部分退款方案</view>
+    <view class="form-item">
+      <text class="label">退款金额</text>
+      <input class="input" type="digit" placeholder="请输入退款金额" value="{{proposedAmount}}" bindinput="onProposedAmountInput" />
+    </view>
+    <view class="form-item">
+      <text class="label">扣款原因</text>
+      <textarea class="textarea" placeholder="请说明扣款原因" value="{{deductionReason}}" bindinput="onDeductionReasonInput" />
+    </view>
+    <button class="propose-btn" bindtap="proposePartialRefund" loading="{{proposing}}">
+      提出方案
+    </button>
+  </view>
+</view>

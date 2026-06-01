@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="header-card card">
+    <view class="wallet-info">
+      <view class="wallet-item">
+        <text class="wallet-label">积分余额</text>
+        <text class="wallet-value">{{wallet.points_balance || 100}}</text>
+      </view>
+      <view class="wallet-item">
+        <text class="wallet-label">可用余额</text>
+        <text class="wallet-value">¥{{wallet.available_balance || 0}}</text>
+      </view>
+      <view class="wallet-item">
+        <text class="wallet-label">冻结金额</text>
+        <text class="wallet-value">¥{{wallet.frozen_balance || 0}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="nav-grid">
+    <view class="nav-item card" bindtap="goToLeads">
+      <view class="nav-icon">📋</view>
+      <view class="nav-title">线索大厅</view>
+      <view class="nav-badge" wx:if="{{pendingLeadsCount > 0}}">{{pendingLeadsCount}}</view>
+    </view>
+    <view class="nav-item card" bindtap="goToOrders">
+      <view class="nav-icon">💼</view>
+      <view class="nav-title">交易管理</view>
+    </view>
+    <view class="nav-item card" bindtap="goToReviews">
+      <view class="nav-icon">⭐</view>
+      <view class="nav-title">评价管理</view>
+    </view>
+    <view class="nav-item card" bindtap="goToProfile">
+      <view class="nav-icon">⚙️</view>
+      <view class="nav-title">中介信息</view>
+    </view>
+  </view>
+</view>

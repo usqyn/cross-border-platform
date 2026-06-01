@@ -1,0 +1,44 @@
+# 依赖
+node_modules/
+
+# 环境变量
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 构建输出
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 微信小程序缓存
+miniprogram/*.wxapkg
+miniprogram/pages/**/*.js.map
+miniprogram/pages/**/*.css.map
+
+# MongoDB数据
+*.db
+*.db.*
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# 临时文件
+*.tmp
+*.temp

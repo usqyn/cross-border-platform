@@ -1,0 +1,70 @@
+<view class="container">
+  <view class="language-switch">
+    <picker bindchange="onLanguageChange" value="{{langIndex}}" range="{{languages}}">
+      <view class="lang-btn">{{currentLang}}</view>
+    </picker>
+  </view>
+
+  <view class="search-section">
+    <view class="search-box">
+      <input 
+        class="search-input" 
+        placeholder="{{t('home.searchPlaceholder')}}" 
+        value="{{question}}"
+        bindinput="onInput"
+        confirm-type="search"
+        bindconfirm="onSearch"
+      />
+      <button class="search-btn" bindtap="onSearch" loading="{{loading}}">
+        {{t('home.search')}}
+      </button>
+    </view>
+  </view>
+
+  <view wx:if="{{borderStatuses.length > 0}}" class="border-status-section card">
+    <view class="border-status-title">口岸动态</view>
+    <view class="border-status-list">
+      <view wx:for="{{borderStatuses}}" wx:key="_id" class="border-status-item">
+        <view class="border-name">{{item.border_name}}</view>
+        <view class="border-status-text status-{{item.status}}">{{item.status}}</view>
+        <view wx:if="{{item.estimated_wait_time && item.estimated_wait_time !== '无排队'}}" class="wait-time">
+          排队约 {{item.estimated_wait_time}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{answer}}" class="answer-section card">
+    <view class="answer-title">AI 回答</view>
+    <view class="answer-content">{{answer}}</view>
+  </view>
+
+  <view wx:if="{{intermediaries.length > 0}}" class="intermediaries-section">
+    <view class="section-title">{{t('home.recommended')}}</view>
+    <view class="intermediary-list">
+      <view 
+        wx:for="{{intermediaries}}" 
+        wx:key="id" 
+        class="intermediary-card card"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="intermediary-header">
+          <image class="logo" src="{{item.logo}}" mode="aspectFill" />
+          <view class="info">
+            <view class="name">{{item.name}}</view>
+            <view class="meta">
+              <text wx:if="{{item.isCertified}}" class="certified-tag">{{t('intermediary.certified')}}</text>
+              <text class="rating">★ {{item.rating}}</text>
+              <text class="reviews">{{item.reviewCount}} {{t('intermediary.reviews')}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="tags">
+          <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</text>
+        </view>
+        <view class="description">{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="header card">
+    <view class="title">申请退款</view>
+    <view class="info">
+      <text class="label">订单金额</text>
+      <text class="amount">¥{{escrowAmount}}</text>
+    </view>
+  </view>
+
+  <view class="form card">
+    <view class="form-item">
+      <text class="label">申请退款金额</text>
+      <input 
+        class="input" 
+        type="digit" 
+        placeholder="请输入退款金额" 
+        value="{{requestedAmount}}"
+        bindinput="onAmountInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label">退款原因</text>
+      <textarea 
+        class="textarea" 
+        placeholder="请详细描述退款原因" 
+        value="{{reason}}"
+        bindinput="onReasonInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label">上传凭证</text>
+      <view class="upload-area" bindtap="chooseImages">
+        <view class="upload-btn" wx:if="{{!images || images.length === 0}}">
+          <text class="icon">+</text>
+          <text class="text">点击上传</text>
+        </view>
+        <view class="image-list">
+          <view class="image-item" wx:for="{{images}}" wx:key="*this">
+            <image class="image" src="{{item}}" mode="aspectFill" />
+            <text class="delete" bindtap="deleteImage" data-index="{{index}}">×</text>
+          </view>
+          <view class="upload-btn" wx:if="{{images && images.length < 5}}" bindtap="chooseImages">
+            <text class="icon">+</text>
+            <text class="text">添加图片</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button class="submit-btn primary-btn" bindtap="submitRefund" loading="{{submitting}}">
+      提交退款申请
+    </button>
+  </view>
+</view>

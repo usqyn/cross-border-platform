@@ -1,0 +1,351 @@
+.container {
+  padding: 20rpx;
+}
+
+.header {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111827;
+}
+
+.status {
+  padding: 10rpx 24rpx;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+}
+
+.status.refund_requested {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status.partial_refund_proposed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status.dispute_reviewing {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.status.arbitrated_completed {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.info {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.info-item .label {
+  font-size: 28rpx;
+  color: #6b7280;
+}
+
+.info-item .value {
+  font-size: 28rpx;
+  color: #111827;
+  font-weight: 500;
+}
+
+.refund-info, .partial-proposal, .arbitration {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.refund-title, .proposal-title, .arbitration-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20rpx;
+}
+
+.refund-row, .proposal-row, .arbitration-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.refund-row .label, .proposal-row .label, .arbitration-row .label {
+  font-size: 26rpx;
+  color: #6b7280;
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+.refund-row .amount, .proposal-row .amount, .arbitration-row .amount {
+  font-size: 28rpx;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.refund-row .reason, .proposal-row .reason, .arbitration-row .reason {
+  font-size: 26rpx;
+  color: #374151;
+  flex: 1;
+  line-height: 1.6;
+}
+
+.evidences {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+  flex-wrap: wrap;
+}
+
+.evidence-image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.evidence-image .image {
+  width: 100%;
+  height: 100%;
+  background: #f3f4f6;
+}
+
+.logs {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.logs-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 24rpx;
+}
+
+.log-item {
+  padding: 24rpx;
+  background: #f9fafb;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.log-item:last-child {
+  margin-bottom: 0;
+}
+
+.log-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: #e5e7eb;
+  margin-right: 16rpx;
+}
+
+.log-user {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.log-user .name {
+  font-size: 26rpx;
+  color: #111827;
+  font-weight: 500;
+}
+
+.log-user .type {
+  font-size: 22rpx;
+  color: #9ca3af;
+}
+
+.time {
+  font-size: 22rpx;
+  color: #9ca3af;
+}
+
+.log-message {
+  font-size: 26rpx;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.log-images {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+}
+
+.log-image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 12rpx;
+  background: #f3f4f6;
+}
+
+.actions {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-item .label {
+  display: block;
+  font-size: 26rpx;
+  color: #374151;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120rpx;
+  padding: 20rpx;
+  background: #f9fafb;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.upload-area {
+  width: 100%;
+}
+
+.image-list {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  position: relative;
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.image-item .image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+  background: #f3f4f6;
+}
+
+.image-item .delete {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  width: 36rpx;
+  height: 36rpx;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.upload-btn {
+  width: 140rpx;
+  height: 140rpx;
+  background: #f9fafb;
+  border: 2rpx dashed #d1d5db;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-btn .icon {
+  font-size: 40rpx;
+  color: #9ca3af;
+  line-height: 1;
+}
+
+.upload-btn .text {
+  font-size: 22rpx;
+  color: #9ca3af;
+  margin-top: 4rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.action-buttons {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  gap: 16rpx;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 24rpx;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+}
+
+.action-btn.reject {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.propose-card {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.propose-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20rpx;
+}
+
+.input {
+  width: 100%;
+  padding: 20rpx;
+  background: #f9fafb;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.propose-btn {
+  width: 100%;
+  margin-top: 20rpx;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+}

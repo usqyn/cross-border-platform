@@ -1,0 +1,186 @@
+.language-switch {
+  text-align: right;
+  margin-bottom: 20rpx;
+}
+
+.lang-btn {
+  display: inline-block;
+  background: #1e3a8a;
+  color: white;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+.search-section {
+  margin-bottom: 30rpx;
+}
+
+.search-box {
+  display: flex;
+  gap: 20rpx;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  background: white;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.search-btn {
+  white-space: nowrap;
+}
+
+.answer-section {
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.answer-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #e5e7eb;
+}
+
+.answer-content {
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #374151;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+  color: #111827;
+}
+
+.intermediary-card {
+  padding: 24rpx;
+}
+
+.intermediary-header {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+  background: #f3f4f6;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 12rpx;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 24rpx;
+}
+
+.certified-tag {
+  background: #10b981;
+  color: white;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+.rating {
+  color: #f59e0b;
+}
+
+.reviews {
+  color: #6b7280;
+}
+
+.description {
+  font-size: 26rpx;
+  color: #6b7280;
+  margin-top: 16rpx;
+}
+
+.border-status-section {
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.border-status-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 20rpx;
+}
+
+.border-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.border-status-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  background: #f9fafb;
+  border-radius: 16rpx;
+}
+
+.border-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #111827;
+}
+
+.border-status-text {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+.border-status-text.status-正常通关 {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.border-status-text.status-排队中 {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.border-status-text.status-临时关闭 {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.border-status-text.status-节假日休息 {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.wait-time {
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-left: 12rpx;
+}
