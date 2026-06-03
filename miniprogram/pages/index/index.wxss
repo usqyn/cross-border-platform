@@ -55,6 +55,30 @@
   color: #374151;
 }
 
+/* 导流引导文案样式 */
+.guide-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  margin-top: 24rpx;
+  padding: 20rpx;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 12rpx;
+  border-left: 6rpx solid #f59e0b;
+}
+
+.guide-icon {
+  font-size: 32rpx;
+  flex-shrink: 0;
+}
+
+.guide-text {
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #92400e;
+  font-weight: 500;
+}
+
 .section-title {
   font-size: 32rpx;
   font-weight: 600;
@@ -117,72 +141,6 @@
   font-size: 26rpx;
   color: #6b7280;
   margin-top: 16rpx;
-}
-
-.border-status-section {
-  padding: 30rpx;
-  margin-bottom: 30rpx;
-}
-
-.border-status-title {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #1e3a8a;
-  margin-bottom: 20rpx;
-}
-
-.border-status-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-}
-
-.border-status-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20rpx;
-  background: #f9fafb;
-  border-radius: 16rpx;
-}
-
-.border-name {
-  font-size: 28rpx;
-  font-weight: 500;
-  color: #111827;
-}
-
-.border-status-text {
-  font-size: 24rpx;
-  padding: 6rpx 16rpx;
-  border-radius: 20rpx;
-  font-weight: 500;
-}
-
-.border-status-text.status-正常通关 {
-  background: #d1fae5;
-  color: #065f46;
-}
-
-.border-status-text.status-排队中 {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.border-status-text.status-临时关闭 {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.border-status-text.status-节假日休息 {
-  background: #e5e7eb;
-  color: #4b5563;
-}
-
-.wait-time {
-  font-size: 24rpx;
-  color: #6b7280;
-  margin-left: 12rpx;
 }
 
 /* 金刚区样式 - 垂直行业分类导航 */

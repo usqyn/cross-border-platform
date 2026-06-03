@@ -39,7 +39,6 @@ app.use('/api/payments', paymentLimiter, require('./routes/payments'));
 app.use('/api/refund', paymentLimiter, require('./routes/refund'));
 app.use('/api/dispute', paymentLimiter, require('./routes/dispute'));
 app.use('/api/messages', require('./routes/messages'));
-app.use('/api/borders', require('./routes/borders'));
 
 // 认证相关接口（更严格的限流）
 app.use('/api/auth', authLimiter, require('./routes/auth'));

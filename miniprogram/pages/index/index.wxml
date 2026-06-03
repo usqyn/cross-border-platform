@@ -5,6 +5,7 @@
     </picker>
   </view>
 
+  <!-- AI 搜索框 - 核心入口 -->
   <view class="search-section">
     <view class="search-box">
       <input 
@@ -21,7 +22,7 @@
     </view>
   </view>
 
-  <!-- 金刚区 - 垂直行业分类导航 -->
+  <!-- 金刚区 - 垂直行业分类导航（核心导流） -->
   <view class="biz-zone-section">
     <view class="biz-zone-grid">
       <view class="biz-zone-item" bindtap="goToCategory" data-type="visa_legal">
@@ -55,24 +56,18 @@
     </view>
   </view>
 
-  <view wx:if="{{borderStatuses.length > 0}}" class="border-status-section card">
-    <view class="border-status-title">口岸动态</view>
-    <view class="border-status-list">
-      <view wx:for="{{borderStatuses}}" wx:key="_id" class="border-status-item">
-        <view class="border-name">{{item.border_name}}</view>
-        <view class="border-status-text status-{{item.status}}">{{item.status}}</view>
-        <view wx:if="{{item.estimated_wait_time && item.estimated_wait_time !== '无排队'}}" class="wait-time">
-          排队约 {{item.estimated_wait_time}}
-        </view>
-      </view>
-    </view>
-  </view>
-
+  <!-- AI 回答区域 -->
   <view wx:if="{{answer}}" class="answer-section card">
     <view class="answer-title">AI 回答</view>
     <view class="answer-content">{{answer}}</view>
+    <!-- 导流引导文案 -->
+    <view class="guide-tip">
+      <text class="guide-icon">💡</text>
+      <text class="guide-text">出入境口岸排队与过关情况实时变动，建议直接在上方【分类专区】寻找认证中介获取最新实况与代办服务。</text>
+    </view>
   </view>
 
+  <!-- 推荐中介列表 -->
   <view wx:if="{{intermediaries.length > 0}}" class="intermediaries-section">
     <view class="section-title">{{t('home.recommended')}}</view>
     <view class="intermediary-list">

@@ -122,7 +122,3 @@ export const sendMessage = (data) => {
 export const getMessages = (leadId) => {
   return request(`/messages/${leadId}`, 'GET');
 };
-
-export const getBorderStatuses = () => {
-  return request('/borders/active', 'GET');
-};

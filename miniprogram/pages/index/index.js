@@ -1,5 +1,5 @@
 const app = getApp();
-import { askAI, getBorderStatuses } from '../../utils/api.js';
+import { askAI } from '../../utils/api.js';
 
 Page({
   data: {
@@ -7,7 +7,6 @@ Page({
     answer: '',
     intermediaries: [],
     loading: false,
-    borderStatuses: [],
     languages: ['中文', 'Русский', 'Қазақша'],
     langCodes: ['zh', 'ru', 'kk'],
     langIndex: 0,
@@ -23,7 +22,6 @@ Page({
         currentLang: this.data.languages[index]
       });
     }
-    this.loadBorderStatuses();
     
     wx.showShareMenu({
       withShareTicket: true,
@@ -99,15 +97,6 @@ Page({
       });
     } finally {
       this.setData({ loading: false });
-    }
-  },
-
-  async loadBorderStatuses() {
-    try {
-      const res = await getBorderStatuses();
-      this.setData({ borderStatuses: res.data || [] });
-    } catch (err) {
-      console.error('Load border statuses failed:', err);
     }
   },
 
