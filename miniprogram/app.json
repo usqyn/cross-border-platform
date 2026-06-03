@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/intermediaries/intermediaries",
+    "pages/category/category",
     "pages/detail/detail",
     "pages/admin/admin",
     "pages/admin-leads/admin-leads",

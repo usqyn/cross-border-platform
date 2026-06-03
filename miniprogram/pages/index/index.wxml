@@ -21,6 +21,40 @@
     </view>
   </view>
 
+  <!-- 金刚区 - 垂直行业分类导航 -->
+  <view class="biz-zone-section">
+    <view class="biz-zone-grid">
+      <view class="biz-zone-item" bindtap="goToCategory" data-type="visa_legal">
+        <view class="biz-icon-wrapper visa">
+          <text class="biz-icon">🛂</text>
+        </view>
+        <text class="biz-title">签证法务</text>
+        <text class="biz-subtitle">Visa & Legal</text>
+      </view>
+      <view class="biz-zone-item" bindtap="goToCategory" data-type="customs_auto">
+        <view class="biz-icon-wrapper auto">
+          <text class="biz-icon">🚗</text>
+        </view>
+        <text class="biz-title">口岸自驾</text>
+        <text class="biz-subtitle">Customs & Auto</text>
+      </view>
+      <view class="biz-zone-item" bindtap="goToCategory" data-type="real_estate">
+        <view class="biz-icon-wrapper estate">
+          <text class="biz-icon">🏠</text>
+        </view>
+        <text class="biz-title">房产投资</text>
+        <text class="biz-subtitle">Real Estate</text>
+      </view>
+      <view class="biz-zone-item" bindtap="goToCategory" data-type="study_life">
+        <view class="biz-icon-wrapper study">
+          <text class="biz-icon">🎓</text>
+        </view>
+        <text class="biz-title">留学生活</text>
+        <text class="biz-subtitle">Study & Life</text>
+      </view>
+    </view>
+  </view>
+
   <view wx:if="{{borderStatuses.length > 0}}" class="border-status-section card">
     <view class="border-status-title">口岸动态</view>
     <view class="border-status-list">

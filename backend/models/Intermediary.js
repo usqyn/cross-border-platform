@@ -12,8 +12,13 @@ const intermediarySchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['vehicle_service', 'personal_service', 'business_service', 'logistics'],
+    enum: ['visa_legal', 'customs_auto', 'real_estate', 'study_life', 'vehicle_service', 'personal_service', 'business_service', 'logistics'],
     required: true
+  },
+  businessZone: {
+    type: String,
+    enum: ['visa_legal', 'customs_auto', 'real_estate', 'study_life'],
+    default: null
   },
   isCertified: {
     type: Boolean,

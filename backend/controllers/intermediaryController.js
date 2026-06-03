@@ -63,9 +63,13 @@ async function calculateWeight(intermediaryId) {
 
 exports.getIntermediaries = async (req, res) => {
   try {
-    const { category, language = 'zh', page = 1, limit = 10, sort_by = 'weight' } = req.query;
+    const { category, businessZone, language = 'zh', page = 1, limit = 20, sort_by = 'weight' } = req.query;
     const query = { isCertified: true };
-    if (category) {
+    
+    // 支持两种分类查询：category(旧) 和 businessZone(新)
+    if (businessZone) {
+      query.businessZone = businessZone;
+    } else if (category) {
       query.category = category;
     }
     
@@ -78,8 +82,12 @@ exports.getIntermediaries = async (req, res) => {
       await inter.save();
     }
     
-    // Re-query with proper sorting
-    let sortQuery = { weight_score: -1, rating: -1, membershipLevel: -1 };
+    // Re-query with proper sorting: VIP > Premium > Normal, then by credit_score
+    let sortQuery = { 
+      membershipLevel: -1,  // vip=2 > premium=1 > basic=0
+      credit_score: -1,      // 信用分降序
+      weight_score: -1 
+    };
     if (sort_by === 'rating') {
       sortQuery = { rating: -1, weight_score: -1 };
     }
@@ -98,8 +106,9 @@ exports.getIntermediaries = async (req, res) => {
         name: inter.name[language] || inter.name.zh,
         logo: inter.logo,
         category: inter.category,
+        businessZone: inter.businessZone,
         isCertified: inter.isCertified,
-        membershipLevel: inter.membershipLevel || 'free',
+        membershipLevel: inter.membershipLevel || 'basic',
         vipLevel: inter.vipLevel || 'normal',
         rating: inter.rating,
         reviewCount: inter.reviewCount,

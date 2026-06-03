@@ -184,3 +184,77 @@
   color: #6b7280;
   margin-left: 12rpx;
 }
+
+/* 金刚区样式 - 垂直行业分类导航 */
+.biz-zone-section {
+  margin: 30rpx 0;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(102, 126, 234, 0.3);
+}
+
+.biz-zone-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+}
+
+.biz-zone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 10rpx;
+  background: white;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+}
+
+.biz-zone-item:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.biz-icon-wrapper {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.biz-icon-wrapper.visa {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.biz-icon-wrapper.auto {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.biz-icon-wrapper.estate {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.biz-icon-wrapper.study {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.biz-icon {
+  font-size: 48rpx;
+}
+
+.biz-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 4rpx;
+}
+
+.biz-subtitle {
+  font-size: 20rpx;
+  color: #6b7280;
+}

@@ -116,5 +116,19 @@ Page({
     wx.navigateTo({
       url: `/pages/detail/detail?id=${id}`
     });
+  },
+
+  goToCategory(e) {
+    const type = e.currentTarget.dataset.type;
+    const typeNames = {
+      'visa_legal': '签证法务',
+      'customs_auto': '口岸自驾',
+      'real_estate': '房产投资',
+      'study_life': '留学生活'
+    };
+    
+    wx.navigateTo({
+      url: `/pages/category/category?type=${type}&name=${encodeURIComponent(typeNames[type] || '分类')}`
+    });
   }
 });
