@@ -19,13 +19,13 @@
     <view class="refund-title">退款申请</view>
     <view class="refund-row">
       <text class="label">申请金额</text>
-      <text class="amount">¥{{dispute.refund_request?.requested_amount}}</text>
+      <text class="amount">¥{{dispute.refund_request && dispute.refund_request.requested_amount}}</text>
     </view>
     <view class="refund-row">
       <text class="label">退款原因</text>
-      <text class="reason">{{dispute.refund_request?.reason}}</text>
+      <text class="reason">{{dispute.refund_request && dispute.refund_request.reason}}</text>
     </view>
-    <view class="evidences" wx:if="{{dispute.refund_request?.evidences?.length > 0}}">
+    <view class="evidences" wx:if="{{dispute.refund_request && dispute.refund_request.evidences && dispute.refund_request.evidences.length > 0}}">
       <view class="evidence-image" wx:for="{{dispute.refund_request.evidences}}" wx:key="*this">
         <image class="image" src="{{item}}" mode="aspectFill" />
       </view>
@@ -36,11 +36,11 @@
     <view class="proposal-title">中介提出部分退款方案</view>
     <view class="proposal-row">
       <text class="label">退款金额</text>
-      <text class="amount">¥{{dispute.partial_refund_proposal?.proposed_amount}}</text>
+      <text class="amount">¥{{dispute.partial_refund_proposal && dispute.partial_refund_proposal.proposed_amount}}</text>
     </view>
     <view class="proposal-row">
       <text class="label">扣款原因</text>
-      <text class="reason">{{dispute.partial_refund_proposal?.deduction_reason}}</text>
+      <text class="reason">{{dispute.partial_refund_proposal && dispute.partial_refund_proposal.deduction_reason}}</text>
     </view>
   </view>
 
@@ -48,15 +48,15 @@
     <view class="arbitration-title">仲裁结果</view>
     <view class="arbitration-row">
       <text class="label">退还给买家</text>
-      <text class="amount">¥{{dispute.arbitration?.refund_to_buyer}}</text>
+      <text class="amount">¥{{dispute.arbitration && dispute.arbitration.refund_to_buyer}}</text>
     </view>
     <view class="arbitration-row">
       <text class="label">支付给中介</text>
-      <text class="amount">¥{{dispute.arbitration?.pay_to_seller}}</text>
+      <text class="amount">¥{{dispute.arbitration && dispute.arbitration.pay_to_seller}}</text>
     </view>
     <view class="arbitration-row">
       <text class="label">裁决理由</text>
-      <text class="reason">{{dispute.arbitration?.judgment_reason}}</text>
+      <text class="reason">{{dispute.arbitration && dispute.arbitration.judgment_reason}}</text>
     </view>
   </view>
 
@@ -65,15 +65,15 @@
     <view class="logs-list">
       <view class="log-item" wx:for="{{dispute.dispute_logs}}" wx:key="index">
         <view class="log-header">
-          <image class="avatar" src="{{item.user?.avatar}}" mode="aspectFill" />
+          <image class="avatar" src="{{item.user && item.user.avatar}}" mode="aspectFill" />
           <view class="log-user">
-            <text class="name">{{item.user?.nickname}}</text>
+            <text class="name">{{item.user && item.user.nickname}}</text>
             <text class="type">{{item.user_type === 'buyer' ? '买家' : '卖家'}}</text>
           </view>
           <text class="time">{{formatTime(item.submitted_at)}}</text>
         </view>
         <view class="log-message" wx:if="{{item.message}}">{{item.message}}</view>
-        <view class="log-images" wx:if="{{item.images?.length > 0}}">
+        <view class="log-images" wx:if="{{item.images && item.images.length > 0}}">
           <image class="log-image" wx:for="{{item.images}}" wx:for-item="img" wx:key="*this" src="{{img}}" mode="aspectFill" />
         </view>
       </view>

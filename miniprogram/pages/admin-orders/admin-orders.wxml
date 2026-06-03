@@ -15,13 +15,13 @@
     <view wx:for="{{orders}}" wx:key="_id" class="order-card card">
       <view class="order-header">
         <view class="order-title">
-          <text class="order-type">{{getServiceTypeName(item.lead_id?.service_type)}}</text>
+          <text class="order-type">{{getServiceTypeName(item.lead_id && item.lead_id.service_type)}}</text>
           <text class="order-status {{item.status}}">{{getStatusText(item.status)}}</text>
         </view>
         <view class="order-time">{{formatTime(item.created_at)}}</view>
       </view>
       <view class="order-info">
-        <text class="order-customer">客户：{{item.user_id?.nickname || '匿名'}}</text>
+        <text class="order-customer">客户：{{item.user_id && item.user_id.nickname || '匿名'}}</text>
         <text class="order-amount">金额：¥{{item.amount}}</text>
       </view>
       <view class="order-footer">

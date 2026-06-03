@@ -21,10 +21,10 @@
     </view>
     <view class="lead-content">{{item.requirements}}</view>
     <view class="lead-meta">
-      <text class="lead-user">客户：{{item.user_id?.nickname || '匿名用户'}}</text>
+      <text class="lead-user">客户：{{item.user_id && item.user_id.nickname || '匿名用户'}}</text>
       <text class="lead-date">办理时间：{{item.departure_time}}</text>
     </view>
-    <view class="lead-footer" wx:if="{{item.status === 'pending_unlock'">
+    <view class="lead-footer" wx:if="{{item.status === 'pending_unlock'}}">
       <button class="unlock-btn" bindtap="unlockLead" data-id="{{item._id}}" catchtap="true">
         消耗1积分解锁联系方式
       </button>
@@ -39,6 +39,7 @@
       </button>
     </view>
   </view>
+</view>
 </view>
 
 <view class="modal-mask" wx:if="{{showEscrowModal}}" bindtap="hideEscrowModal">

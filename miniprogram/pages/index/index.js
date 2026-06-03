@@ -1,5 +1,5 @@
 const app = getApp();
-import { askAI } from '../../utils/api.js';
+import { askAI, getBorderStatuses, getIntermediaries } from '../../utils/api.js';
 
 Page({
   data: {
@@ -7,6 +7,7 @@ Page({
     answer: '',
     intermediaries: [],
     loading: false,
+    borderStatuses: [],
     languages: ['中文', 'Русский', 'Қазақша'],
     langCodes: ['zh', 'ru', 'kk'],
     langIndex: 0,
@@ -22,6 +23,8 @@ Page({
         currentLang: this.data.languages[index]
       });
     }
+    this.loadBorderStatuses();
+    this.loadIntermediaries();
     
     wx.showShareMenu({
       withShareTicket: true,
@@ -105,6 +108,24 @@ Page({
     wx.navigateTo({
       url: `/pages/detail/detail?id=${id}`
     });
+  },
+
+  async loadBorderStatuses() {
+    try {
+      const res = await getBorderStatuses();
+      this.setData({ borderStatuses: res.data || [] });
+    } catch (err) {
+      console.error('加载口岸状态失败', err);
+    }
+  },
+
+  async loadIntermediaries() {
+    try {
+      const res = await getIntermediaries({ page: 1, limit: 6, sort_by: 'weight' });
+      this.setData({ intermediaries: res.data || [] });
+    } catch (err) {
+      console.error('加载推荐中介失败', err);
+    }
   },
 
   goToCategory(e) {

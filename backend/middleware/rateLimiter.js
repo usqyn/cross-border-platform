@@ -2,6 +2,7 @@
 // 基于 express-rate-limit 实现
 
 const rateLimit = require('express-rate-limit');
+const { defaultKeyGenerator } = rateLimit;
 
 // 通用API限流器（通用保护）
 const generalLimiter = rateLimit({
@@ -19,10 +20,7 @@ const generalLimiter = rateLimit({
   },
   standardHeaders: true, // 返回标准的 RateLimit-* 头
   legacyHeaders: false, // 禁用 X-RateLimit-* 头
-  keyGenerator: (req) => {
-    // 使用 IP 地址作为限流 key，支持代理
-    return req.ip || req.connection.remoteAddress || 'unknown';
-  },
+  keyGenerator: defaultKeyGenerator,
   skip: (req) => {
     // 跳过健康检查等特定路径
     return req.path === '/health' || req.path === '/ping';
@@ -65,9 +63,7 @@ const aiLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req) => {
-    return req.ip || req.connection.remoteAddress || 'unknown';
-  },
+  keyGenerator: defaultKeyGenerator,
   handler: (req, res, next, options) => {
     const lang = req.headers['accept-language'] || 'zh';
     
@@ -113,9 +109,7 @@ const authLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req) => {
-    return req.ip || req.connection.remoteAddress || 'unknown';
-  },
+  keyGenerator: defaultKeyGenerator,
   handler: (req, res, next, options) => {
     const lang = req.headers['accept-language'] || 'zh';
     
@@ -153,9 +147,7 @@ const paymentLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
-  keyGenerator: (req) => {
-    return req.ip || req.connection.remoteAddress || 'unknown';
-  },
+  keyGenerator: defaultKeyGenerator,
   handler: (req, res, next, options) => {
     const lang = req.headers['accept-language'] || 'zh';
     

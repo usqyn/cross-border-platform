@@ -292,7 +292,7 @@ const seedData = async () => {
     const wallet2 = new IntermediaryWallet({
       intermediary_id: savedIntermediaries[1]._id,
       points_balance: 80,
-      membership_level: 'premium',
+      membership_level: 'vip',
       available_balance: 3000,
       frozen_balance: 0,
       total_earned: 18000
@@ -325,7 +325,7 @@ const seedData = async () => {
     });
 
     const payment2 = new Payment({
-      lead_id: null,
+      lead_id: savedLeads[1]._id,
       user_id: savedUsers[1]._id,
       intermediary_id: savedIntermediaries[0]._id,
       amount: 2000,

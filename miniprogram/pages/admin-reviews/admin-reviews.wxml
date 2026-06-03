@@ -18,10 +18,10 @@
 
     <view wx:for="{{reviews}}" wx:key="_id" class="review-card card">
       <view class="review-header">
-        <image class="review-avatar" src="{{item.user_id?.avatar || '/assets/default-avatar.png'}}" mode="aspectFill"></image>
+        <image class="review-avatar" src="{{item.user_id && item.user_id.avatar || '/assets/default-avatar.png'}}" mode="aspectFill"></image>
         <view class="review-info">
           <view class="review-user">
-            {{item.user_id?.nickname || '匿名用户'}
+            {{item.user_id && item.user_id.nickname || '匿名用户'}}
             <text wx:if="{{item.is_verified}}" class="verified-tag">平台验证客户</text>
           </view>
           <view class="review-rating">
